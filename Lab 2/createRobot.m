@@ -20,5 +20,5 @@ scale = 0.5;
 q = zeros(1,6); 
 
 robot.plot(q,'workspace',workspace,'scale',scale);
-robot.teach
+% robot.teach
 end

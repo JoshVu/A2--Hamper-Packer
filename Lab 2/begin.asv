@@ -1,13 +1,18 @@
-robot = createRobot;
+% robot = createRobot;
 q=[0 0 0 0 0 0];
 robot.plot(q)
-tr1 = transl(0.4722,0,0.4209)*trotx(pi);
+
+boxqmatrix = zeros(5,6);
+for i=1:size(boxqmatrix)
+    y = -0.45 + i * -0.15;
+    boxqmatrix(i,:) = robot.ikcon(transl(0.4,y,0.3)*trotx(pi));
+end
+
 tr2 = tr1*transl(0,0,-0.15);
 tr3 = tr2*trotz(pi/2);
 tr4 = tr3*transl(0,-0.07,-0.07)*trotx(pi/2);
 
 q5 = robot.ikcon(tr4);
-q5 = q5 - [deg2rad(120) 0 0 0 0 0];
 tr5 = robot.fkine(q5);
 
 movement(robot, tr1, 50)
