@@ -105,7 +105,7 @@ brick3Mesh_h = trisurf(f,brick3Verts(:,1) + brick3Pose(1,4),brick3Verts(:,2) + b
         estopVertexCount = size(v,1);
         midPoint = sum(v)/estopVertexCount;
         estopVerts = v - repmat(midPoint,estopVertexCount,1);
-        estopPose = transl(1,1,0.05);
+        estopPose = transl(1,1,-0.1);
         vertexColours = [data.vertex.red, data.vertex.green, data.vertex.blue] / 255;
         estopMesh_h = trisurf(f,estopVerts(:,1) + estopPose(1,4),estopVerts(:,2) + estopPose(2,4), estopVerts(:,3) + estopPose(3,4) ...
     ,'FaceVertexCData',vertexColours,'EdgeColor','interp','EdgeLighting','flat');
@@ -332,6 +332,16 @@ for i = 1:size(qMatrix,1)
     end
     densoRobot.plot(qMatrix(i,:));
 end
+
+% TTarget14 = TStart;
+% qTarget14 = densoRobot.ikcon(TTarget14,densoRobot.getpos());
+% qMatrix = jtraj(qTarget13,qTarget14,steps);
+% % densoRobot.animate(qMatrix);
+% for i = 1:size(qMatrix,1)
+%     while gui.eStop
+%     end
+%     densoRobot.plot(qMatrix(i,:));
+% end
 % hold on;
 % densoRobot.teach;
 % Robot1= densoRobot(transl(1,1,1));
@@ -405,11 +415,6 @@ end
 %         FenceMesh_h = trisurf(f,v(:,1),v(:,2), v(:,3) ...
 %             ,'FaceVertexCData',vertexColours,'EdgeColor','interp','EdgeLighting','flat');
 %         
-        %Model
-%         [f,v,data] = plyread('untitled.ply','tri');
-%         vertexColours = [data.vertex.gray, data.vertex.green, data.vertex.blue] / 255;
-% 
-%         UntitledMesh_h = trisurf(f,v(:,1),v(:,2), v(:,3) ...
-%             ,'FaceVertexCData',vertexColours,'EdgeColor','interp','EdgeLighting','flat');
+
 
      
